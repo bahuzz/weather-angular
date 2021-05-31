@@ -1,27 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-city-search',
   templateUrl: './city-search.component.html',
   styleUrls: ['./city-search.component.scss']
 })
-export class CitySearchComponent implements OnInit {
+export class CitySearchComponent {
 
   searchForm = new FormGroup({
     city: new FormControl('')
   });
-  
+  @Output() cityEvent = new EventEmitter<string>();
 
-  constructor(private apiService: ApiService) { }
-
-  ngOnInit(): void {
-  }
+  constructor() { }
 
   onSubmit() {
-    console.log(this.searchForm.value.city);
-    this.apiService.getForecast(this.searchForm.value.city)
-      .subscribe(data => console.log(data))
+    this.cityEvent.emit(this.searchForm.value.city);
   }
 }

@@ -1,2 +1,4 @@
-<h1>Weather</h1>
-<app-city-search></app-city-search>
+<h1>{{title}}</h1>
+<app-city-search (cityEvent)="onCity($event)"></app-city-search>
+<app-chart [forecast]="forecast"></app-chart>
+<div class="error">{{errorMessage}}</div>

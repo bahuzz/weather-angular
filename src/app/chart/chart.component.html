@@ -1,1 +1,12 @@
-<p>chart works!</p>
+<div class="chart" *ngIf="forecast.length">
+    <ngx-charts-bar-vertical
+  [results]="forecast"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"></ngx-charts-bar-vertical>
+</div>
